@@ -519,6 +519,18 @@ function waitAndStart() {
   });
 }
 waitAndStart();
+  // 履歴を積んでおく
+  history.pushState({page: "play"}, null, "");
+
+  window.addEventListener('popstate', function(event) {
+    // 予備画面をパッと出す
+    const fallback = document.getElementById('fallback-screen');
+    if(fallback) {
+        fallback.style.display = 'flex';
+    }
+    // 次に備えてまた履歴を積む
+    history.pushState({page: "play"}, null, "");
+  });
 </script>
 </body>
 </html>
